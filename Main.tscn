@@ -1,75 +1,35 @@
-[gd_scene format=3 uid="uid://r8p8f8nocsmp"]
+[gd_scene format=3 uid="uid://c7rg4hvirb5dm"]
 
-[ext_resource type="Texture2D" uid="uid://bvlnag2h8cpjr" path="res://380e50d1-ffb8-42e1-befc-ed687bff436b.png" id="1_r0du0"]
-[ext_resource type="Script" uid="uid://dap8p7kigq0l6" path="res://rigid_body_2d.gd" id="2_r0du0"]
-[ext_resource type="Texture2D" uid="uid://l05l7kmlce6s" path="res://icon.svg" id="2_uu6xs"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2gfw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j84n4"]
-size = Vector2(1197.9543, 72.49686)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2gfw"]
+size = Vector2(11, 98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3e2bi"]
-size = Vector2(20, 316)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a1u8q"]
 
-[node name="Node2D" type="Node2D" unique_id=957536328]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojp0s"]
+size = Vector2(1171, 128)
 
-[node name="WnSc6r" type="Sprite2D" parent="." unique_id=1385781765]
-position = Vector2(999.75, 641.00006)
-scale = Vector2(1.9516604, 2.3041146)
-texture = ExtResource("1_r0du0")
+[node name="Node2D" type="Node2D" unique_id=905370917]
+position = Vector2(440, 221)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="WnSc6r" unique_id=1429711268]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=175495324]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WnSc6r/StaticBody2D" unique_id=666812924]
-position = Vector2(63.151375, 261.70572)
-shape = SubResource("RectangleShape2D_j84n4")
-debug_color = Color(0.012656895, 0.62636304, 0.5118556, 0.41960785)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=672269692]
+shape = SubResource("CircleShape2D_e2gfw")
 
-[node name="Label" type="Label" parent="." unique_id=1206882850]
-offset_left = 106.0
-offset_top = 50.0
-offset_right = 193.0
-offset_bottom = 83.0
-text = "walk"
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=443790686]
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=605535592]
-physics_interpolation_mode = 1
-position = Vector2(348, 454)
-rotation = 0.54803336
-disable_mode = 2
-script = ExtResource("2_r0du0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1985311356]
+position = Vector2(0, 58)
+shape = SubResource("RectangleShape2D_e2gfw")
+debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=2012495629]
-position = Vector2(5, 168)
-scale = Vector2(0.2265625, 2.484375)
-texture = ExtResource("2_uu6xs")
+[node name="StaticBody2D" type="StaticBody2D" parent="RigidBody2D/CollisionShape2D" unique_id=261299398]
+position = Vector2(0, 150)
+physics_material_override = SubResource("PhysicsMaterial_a1u8q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=931347336]
-position = Vector2(5, 168)
-shape = SubResource("RectangleShape2D_3e2bi")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1657263136]
-physics_interpolation_mode = 1
-auto_translate_mode = 1
-position = Vector2(348, 451)
-node_a = NodePath("../RigidBody2D")
-node_b = NodePath("../RigidBody2D2")
-softness = 2.13
-angular_limit_enabled = true
-angular_limit_lower = 0.22514747
-angular_limit_upper = 0.5235988
-
-[node name="RigidBody2D2Bone2D" type="Bone2D" parent="." unique_id=710122992]
-position = Vector2(339, 449.99994)
-rotation = -0.54803336
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="RigidBody2D2Bone2D" unique_id=1084009208]
-disable_mode = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2Bone2D/RigidBody2D2" unique_id=1353823787]
-position = Vector2(-13, 164)
-shape = SubResource("RectangleShape2D_3e2bi")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2Bone2D/RigidBody2D2" unique_id=364556291]
-position = Vector2(-7.0000057, 166.00002)
-scale = Vector2(0.18749994, 2.4531248)
-texture = ExtResource("2_uu6xs")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/CollisionShape2D/StaticBody2D" unique_id=2042906236]
+position = Vector2(111, -27)
+shape = SubResource("RectangleShape2D_ojp0s")
+debug_color = Color(0.9882353, 0, 0.3254902, 0.98039216)

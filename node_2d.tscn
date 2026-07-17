@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://1oqysqmqreng"]
+
+[ext_resource type="Texture2D" uid="uid://dqd5iwxgfljf1" path="res://icon.svg" id="1_0e48y"]
+[ext_resource type="Script" uid="uid://dqokgbyk5sy45" path="res://left.gd" id="1_epypp"]
+[ext_resource type="Texture2D" uid="uid://cbu1k5ai5ppl3" path="res://2110.w023.n001.1301B.p1.1301.jpg" id="1_wtcfe"]
+[ext_resource type="Script" uid="uid://bclmd6p182p82" path="res://right.gd" id="4_0hol4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2gfw"]
+size = Vector2(20, 168)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e2gfw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojp0s"]
+size = Vector2(14.314957, 154.05963)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(1297, 349)
+
+[node name="Node2D" type="Node2D" unique_id=30337386]
+position = Vector2(388, 274)
+
+[node name="LEFT" type="RigidBody2D" parent="." unique_id=574008431]
+script = ExtResource("1_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LEFT" unique_id=1874610950]
+position = Vector2(-18, 79)
+rotation = 0.23212878
+shape = SubResource("RectangleShape2D_e2gfw")
+
+[node name="Sprite2D" type="Sprite2D" parent="LEFT" unique_id=946288941]
+position = Vector2(-18.999996, 82.000015)
+rotation = 0.23212878
+scale = Vector2(0.0031818205, 0.05045455)
+texture = ExtResource("1_wtcfe")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=48474844]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=358444549]
+shape = SubResource("CircleShape2D_e2gfw")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1180585968]
+position = Vector2(2, -13)
+scale = Vector2(0.2734375, 0.546875)
+texture = ExtResource("1_0e48y")
+
+[node name="RIGHT" type="RigidBody2D" parent="." unique_id=1295328398]
+script = ExtResource("4_0hol4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RIGHT" unique_id=2101695574]
+position = Vector2(38.798096, 69.5986)
+rotation = -0.4660029
+shape = SubResource("RectangleShape2D_ojp0s")
+
+[node name="Sprite2D" type="Sprite2D" parent="RIGHT" unique_id=1554416960]
+position = Vector2(38.999992, 70)
+rotation = -0.4660029
+scale = Vector2(0.0026818311, 0.046969697)
+texture = ExtResource("1_wtcfe")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1339105845]
+node_a = NodePath("../LEFT")
+node_b = NodePath("../RIGHT")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1609044409]
+position = Vector2(-1, 156)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1678070476]
+position = Vector2(220.5, 324.5)
+shape = SubResource("RectangleShape2D_epypp")
+debug_color = Color(0.40823716, 0, 0.18199334, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=482677287]
+position = Vector2(201.99998, 966.0001)
+scale = Vector2(1, 0.48939395)
+texture = ExtResource("1_wtcfe")
